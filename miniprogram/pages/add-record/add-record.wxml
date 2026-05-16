@@ -1,0 +1,49 @@
+<view class="container">
+  <!-- 类型切换 -->
+  <view class="type-switch">
+    <text class="type-btn {{type === 'expense' ? 'active' : ''}}" bindtap="switchType" data-type="expense">支出</text>
+    <text class="type-btn {{type === 'income' ? 'active' : ''}}" bindtap="switchType" data-type="income">收入</text>
+  </view>
+
+  <!-- 金额输入 -->
+  <view class="amount-section card">
+    <text class="amount-label">金额</text>
+    <view class="amount-input-wrapper">
+      <text class="currency-sign">¥</text>
+      <input class="amount-input" type="digit" placeholder="0.00" value="{{amount}}" bindinput="onAmountInput" focus="true" />
+    </view>
+  </view>
+
+  <!-- 分类选择 -->
+  <view class="category-section card">
+    <text class="section-label">分类</text>
+    <view class="category-grid">
+      <view
+        class="category-item {{selectedCategoryIndex === index ? 'selected' : ''}}"
+        wx:for="{{categories}}"
+        wx:key="id"
+        bindtap="selectCategory"
+        data-index="{{index}}"
+      >
+        <text class="category-name">{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 描述 -->
+  <view class="card">
+    <text class="section-label">备注</text>
+    <input class="desc-input" placeholder="添加备注（选填）" value="{{description}}" bindinput="onDescInput" />
+  </view>
+
+  <!-- 日期 -->
+  <view class="card">
+    <text class="section-label">日期</text>
+    <picker mode="date" value="{{date}}" bindchange="onDateChange">
+      <view class="date-picker">{{date}}</view>
+    </picker>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class="submit-btn btn-primary" bindtap="submit">保存</view>
+</view>

@@ -1,0 +1,91 @@
+.header {
+  padding: 20rpx 0 40rpx;
+}
+
+.title {
+  display: block;
+  font-size: 44rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.subtitle {
+  display: block;
+  font-size: 26rpx;
+  color: #999;
+  margin-top: 8rpx;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120rpx 0;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+}
+
+.empty-text {
+  font-size: 32rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+}
+
+.empty-hint {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.ledger-card {
+  margin-bottom: 24rpx;
+}
+
+.ledger-header {
+  margin-bottom: 16rpx;
+}
+
+.ledger-name {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.ledger-role {
+  font-size: 22rpx;
+  color: #4A90D9;
+  background-color: rgba(74, 144, 217, 0.1);
+  padding: 4rpx 16rpx;
+  border-radius: 20rpx;
+}
+
+.ledger-desc {
+  font-size: 26rpx;
+  color: #999;
+  display: block;
+  margin-bottom: 20rpx;
+}
+
+.ledger-footer {
+  padding-top: 20rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.ledger-stats {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.stat-separator {
+  margin: 0 10rpx;
+}
+
+.add-btn {
+  font-size: 24rpx;
+  color: #4A90D9;
+  padding: 8rpx 20rpx;
+  border: 1rpx solid #4A90D9;
+  border-radius: 20rpx;
+}

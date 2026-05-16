@@ -1,0 +1,60 @@
+<view class="container">
+  <!-- 日期范围切换 -->
+  <view class="range-switch">
+    <text class="range-btn {{dateRange === 'month' ? 'active' : ''}}" bindtap="switchRange" data-range="month">本月</text>
+    <text class="range-btn {{dateRange === 'year' ? 'active' : ''}}" bindtap="switchRange" data-range="year">本年</text>
+    <text class="range-btn {{dateRange === 'all' ? 'active' : ''}}" bindtap="switchRange" data-range="all">全部</text>
+  </view>
+
+  <!-- 总览 -->
+  <view class="overview card">
+    <view class="overview-item">
+      <text class="overview-label">总收入</text>
+      <text class="overview-value text-green">+¥{{totalIncome}}</text>
+    </view>
+    <view class="overview-divider"></view>
+    <view class="overview-item">
+      <text class="overview-label">总支出</text>
+      <text class="overview-value text-red">-¥{{totalExpense}}</text>
+    </view>
+  </view>
+
+  <!-- 分类统计 -->
+  <view class="section card">
+    <text class="section-title">分类统计</text>
+    <view wx:if="{{categoryStat.length === 0}}" class="empty-tip">暂无数据</view>
+    <view class="stat-list" wx:else>
+      <view class="stat-item" wx:for="{{categoryStat}}" wx:key="index">
+        <view class="stat-info">
+          <text class="stat-name">{{item.category_name || '未分类'}}</text>
+          <text class="stat-type">{{item.type === 'income' ? '收入' : '支出'}}</text>
+        </view>
+        <view class="stat-data">
+          <text class="stat-amount {{item.type === 'income' ? 'text-green' : 'text-red'}}">¥{{item.total}}</text>
+          <text class="stat-count">{{item.count}}笔</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 成员统计 -->
+  <view class="section card">
+    <text class="section-title">成员统计</text>
+    <view wx:if="{{memberStat.length === 0}}" class="empty-tip">暂无数据</view>
+    <view class="stat-list" wx:else>
+      <view class="stat-item" wx:for="{{memberStat}}" wx:key="index">
+        <view class="stat-info">
+          <view class="member-info">
+            <image wx:if="{{item.avatar_url}}" src="{{item.avatar_url}}" class="member-avatar" />
+            <text class="stat-name">{{item.nick_name || '未知'}}</text>
+          </view>
+          <text class="stat-type">{{item.type === 'income' ? '收入' : '支出'}}</text>
+        </view>
+        <view class="stat-data">
+          <text class="stat-amount">¥{{item.total}}</text>
+          <text class="stat-count">{{item.count}}笔</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

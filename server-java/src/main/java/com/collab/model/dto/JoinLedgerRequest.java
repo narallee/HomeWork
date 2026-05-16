@@ -1,0 +1,10 @@
+package com.collab.model.dto;
+
+import jakarta.validation.constraints.NotBlank;
+import lombok.Data;
+
+@Data
+public class JoinLedgerRequest {
+    @NotBlank(message = "邀请码不能为空")
+    private String inviteCode;
+}

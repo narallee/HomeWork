@@ -1,0 +1,31 @@
+<view class="container">
+  <!-- 用户信息 -->
+  <view class="user-card card" bindtap="updateProfile">
+    <view class="user-info">
+      <image wx:if="{{userInfo.avatar_url}}" src="{{userInfo.avatar_url}}" class="user-avatar" />
+      <view wx:else class="user-avatar-placeholder">
+        <text>{{userInfo.nick_name ? userInfo.nick_name[0] : '?'}}</text>
+      </view>
+      <view class="user-detail">
+        <text class="user-name">{{userInfo.nick_name || '点击设置昵称'}}</text>
+        <text class="user-id">ID: {{userInfo.id || ''}}</text>
+      </view>
+    </view>
+    <text class="edit-hint">编辑</text>
+  </view>
+
+  <!-- 功能列表 -->
+  <view class="menu-list">
+    <view class="menu-item card">
+      <text class="menu-label">关于应用</text>
+      <text class="menu-value">协作记账 v1.0.0</text>
+    </view>
+    <view class="menu-item card">
+      <text class="menu-label">数据缓存</text>
+      <text class="menu-value">点击清除</text>
+    </view>
+  </view>
+
+  <!-- 退出登录 -->
+  <view class="logout-btn btn-danger" bindtap="logout">退出登录</view>
+</view>

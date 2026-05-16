@@ -1,0 +1,117 @@
+.page-title {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.action-bar {
+  margin-bottom: 30rpx;
+}
+
+.action-btns {
+  display: flex;
+  gap: 16rpx;
+}
+
+.action-btn {
+  font-size: 26rpx;
+  padding: 10rpx 24rpx;
+  border-radius: 20rpx;
+  border: 1rpx solid #ddd;
+  color: #666;
+}
+
+.action-btn.primary {
+  background-color: #4A90D9;
+  color: #fff;
+  border-color: #4A90D9;
+}
+
+.ledger-item {
+  margin-bottom: 20rpx;
+}
+
+.item-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.item-amount {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #4A90D9;
+}
+
+.item-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.item-role {
+  color: #4A90D9;
+}
+
+/* 弹窗样式 */
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  width: 80%;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 40rpx;
+}
+
+.modal-title {
+  display: block;
+  font-size: 34rpx;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.modal-input {
+  border: 1rpx solid #eee;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+}
+
+.modal-btns {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+}
+
+.modal-btn {
+  flex: 1;
+  text-align: center;
+  padding: 20rpx;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+}
+
+.modal-btn.cancel {
+  color: #666;
+  background: #f5f5f5;
+  margin-right: 20rpx;
+}
+
+.modal-btn.confirm {
+  color: #fff;
+  background: #4A90D9;
+}

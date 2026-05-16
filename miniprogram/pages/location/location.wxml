@@ -1,0 +1,36 @@
+<view class="location-page">
+  <!-- 地图 -->
+  <map
+    id="locationMap"
+    class="map"
+    latitude="{{latitude}}"
+    longitude="{{longitude}}"
+    markers="{{markers}}"
+    show-location="{{sharing}}"
+    scale="15"
+  ></map>
+
+  <!-- 控制面板 -->
+  <view class="control-panel">
+    <!-- 选择账本 -->
+    <view class="panel-row" wx:if="{{!sharing}}">
+      <text class="panel-label">选择团队（账本）</text>
+      <picker bindchange="onLedgerChange" range="{{ledgers}}" range-key="name">
+        <view class="picker-btn">
+          {{selectedLedgerId ? ledgers[selectedLedgerId] : '点击选择'}}
+        </view>
+      </picker>
+    </view>
+
+    <!-- 状态显示 -->
+    <view class="status-bar" wx:if="{{sharing}}">
+      <view class="status-dot active"></view>
+      <text class="status-text">位置共享中 · {{markers.length}}位成员在线</text>
+    </view>
+
+    <!-- 操作按钮 -->
+    <view class="share-btn {{sharing ? 'stop' : 'start'}}" bindtap="toggleSharing">
+      {{sharing ? '停止共享' : '开始共享位置'}}
+    </view>
+  </view>
+</view>

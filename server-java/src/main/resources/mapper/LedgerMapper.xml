@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.collab.mapper.LedgerMapper">
+
+    <select id="findByUserId" resultType="com.collab.model.entity.Ledger">
+        SELECT l.*, lm.role,
+               (SELECT COUNT(*) FROM ledger_members WHERE ledger_id = l.id) as member_count,
+               (SELECT COALESCE(SUM(amount), 0) FROM records WHERE ledger_id = l.id) as total_amount
+        FROM ledgers l
+        JOIN ledger_members lm ON l.id = lm.ledger_id
+        WHERE lm.user_id = #{userId}
+        ORDER BY l.created_at DESC
+    </select>
+
+    <select id="findMembersByLedgerId" resultType="com.collab.model.entity.LedgerMember">
+        SELECT u.id as user_id, u.nick_name, u.avatar_url, lm.role, lm.joined_at
+        FROM ledger_members lm
+        JOIN users u ON lm.user_id = u.id
+        WHERE lm.ledger_id = #{ledgerId}
+    </select>
+
+</mapper>

@@ -1,0 +1,49 @@
+<view class="container" wx:if="{{ledger}}">
+  <!-- 账本信息头 -->
+  <view class="ledger-header card">
+    <view class="flex-between">
+      <text class="ledger-name">{{ledger.name}}</text>
+      <text class="member-count">{{ledger.members.length}}人</text>
+    </view>
+    <text class="ledger-desc">{{ledger.description || '暂无描述'}}</text>
+    <view class="member-list">
+      <view class="member-avatar" wx:for="{{ledger.members}}" wx:key="id">
+        <image wx:if="{{item.avatar_url}}" src="{{item.avatar_url}}" class="avatar-img" />
+        <text wx:else class="avatar-placeholder">{{item.nick_name[0] || '?'}}</text>
+      </view>
+    </view>
+    <view class="header-actions">
+      <text class="header-btn" bindtap="generateCode">邀请成员</text>
+      <text class="header-btn" bindtap="goToStatistics">查看统计</text>
+    </view>
+  </view>
+
+  <!-- 记录列表 -->
+  <view class="records-section">
+    <view class="section-header flex-between">
+      <text class="section-title">账目记录</text>
+      <text class="add-record-btn" bindtap="goToAdd">+ 记一笔</text>
+    </view>
+
+    <view wx:if="{{records.length === 0}}" class="empty-tip">暂无记录</view>
+
+    <view class="record-item card" wx:for="{{records}}" wx:key="id" bindtap="goToEdit" data-id="{{item.id}}">
+      <view class="flex-between">
+        <view class="record-info">
+          <text class="record-category">{{item.category_name || '未分类'}}</text>
+          <text class="record-desc">{{item.description}}</text>
+        </view>
+        <text class="record-amount {{item.type === 'income' ? 'text-green' : 'text-red'}}">
+          {{item.type === 'income' ? '+' : '-'}}¥{{item.amount}}
+        </text>
+      </view>
+      <view class="record-meta">
+        <text>{{item.nick_name || '未知'}}</text>
+        <text>{{item.record_date}}</text>
+      </view>
+    </view>
+
+    <view wx:if="{{loading}}" class="empty-tip">加载中...</view>
+    <view wx:if="{{!hasMore && records.length > 0}}" class="empty-tip">没有更多了</view>
+  </view>
+</view>
